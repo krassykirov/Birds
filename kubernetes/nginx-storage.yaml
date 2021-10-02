@@ -1,0 +1,97 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: nginx-pv0
+  labels:
+    type: local
+spec:
+  storageClassName: microk8s-hostpath
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/app"
+
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  labels:
+    io.kompose.service: nginx-claim0
+  name: nginx-pv0-claim0
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: nginx-pv1
+  labels:
+    app: postgres
+    type: local
+spec:
+  storageClassName: microk8s-hostpath
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/nginx"
+
+---
+
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  labels:
+    io.kompose.service: nginx-claim1
+  name: nginx-pv1-claim1
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: nginx-pv2
+  labels:
+    app: postgres
+    type: local
+spec:
+  storageClassName: microk8s-hostpath
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/static"
+
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  labels:
+    io.kompose.service: nginx-claim2
+  name: nginx-pv1-claim2
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
