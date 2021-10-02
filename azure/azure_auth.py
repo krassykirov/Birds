@@ -1,4 +1,3 @@
-# TODO: Azure OAUTH OpenID Connect Login, To implement without aiohttp async library
 # import urllib,adal,uuid,os
 # import json, requests,datetime
 # from jose import jws
