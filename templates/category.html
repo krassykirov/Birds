@@ -1,0 +1,66 @@
+{% extends "base_old.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="left">
+				 Birds
+			</p>
+		</div>
+	</div>
+</div>
+<div class="hr">
+</div>
+
+<div class="row">
+	<div class="twelve columns">
+		<!-- CATEGORIES-->
+		<section id="options" class="clearfix">
+		<ul id="filters" class="option-set clearfix" data-option-key="filter">
+			<li><a href="#filter" data-option-value="*" class="portofoliobutton selected">Show all</a></li>
+            {% for category in categories %}
+ 			<li><a href="#filter" data-option-value=".{{category}}" class="portofoliobutton">{{category}}</a></li>
+             {% endfor %}
+		</ul>
+		</section>
+	</div>
+</div>
+
+<div class="row">
+<div id="portofolio">
+{% for bird in birds %}
+ {% with bird.photo as img %}
+<div class="four columns category {{ bird.category }}">
+			<h5> {{bird.bird_name }}</h5>
+			<p>
+				 Published on {{bird.created_on|date:"F d Y"}}
+				 {% if bird.user %}
+				 by <a href="{% url 'category' %}/{{ bird.user }}">{{ bird.user }} </a>
+				{% endif %}
+			</p>
+			<div class="portofoliothumb">
+				<div class="portofoliothumboverlay fouroverlay">
+					<div class="inner threedetail">
+						<a class="projectdetail" href="{{bird.get_absolute_url}}">+ Details </a>
+					 <blockquote class="overlay" style="color: #8ed3e7">
+                    {% if bird not in request.user.likes.all or not request.user.is_authenticated %}
+                   <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: white;font-size: 24px"></i>
+                   {% else  %}
+                   <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: #8ed3e7;font-size: 24px"></i>
+                     {% endif  %}
+                </blockquote>
+					</div>
+				</div>
+				<img src="/static/img/{{ img }}" class="fourimage" style="max-width:350px; height:auto !important" alt="{{ bird.bird_name}}"/>
+			</div>
+		</div>
+	{% endwith %}
+ {% endfor %}
+<div class="hr">
+</div>
+
+{% endblock %}

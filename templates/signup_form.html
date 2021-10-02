@@ -1,0 +1,128 @@
+{% extends "base_old.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+ <style>
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      background: url("../static/img/home/Penguins--1400x500.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+.card {
+    margin-bottom: 20px;
+    border: none
+}
+
+.box {
+    width: 450px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #191919;
+    border-radius: 25px;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 15%
+}
+
+::placeholder {
+    color: white;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 15px 15px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.box h1,h5,label {
+    color: white;
+    font-weight: 500
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.box input[type="submit"]:hover {
+    background: #2ecc71
+}
+</style>
+
+{% if not request.user.is_authenticated %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form action="{% url 'signup' %}" method="post" class="box">
+                    <h1>SignUp</h1>
+                    <br>
+                      {% for field in form %}
+<!--                   {{ field.label_tag }}-->
+                       {{ field }}
+                       {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                         {% endfor %}
+                      {% endfor %}
+                    {% for error in form.non_field_errors %}
+                           <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    {% csrf_token %}
+                     <input type="hidden" name="next" value="{{ request.GET.next }}">
+<!--                    <button class="submit" type="submit">Login</button>-->
+                    <input type="submit" name="" value="SignUp">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+    {% if message %}
+        <div class="alert-box" style="align-items: center">
+                 {{ message }} <a href="" class="close">x</a>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% endblock %}

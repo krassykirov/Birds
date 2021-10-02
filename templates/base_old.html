@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width"/>
+<title>Birds</title>
+
+<link rel="stylesheet" href="{% static 'stylesheets/style.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets//skins/blue.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/responsive.css' %}">
+
+</head>
+<body>
+<!-- HIDDEN PANEL
+================================================== -->
+<div id="panel">
+	<div class="row">
+		<div class="twelve columns">
+			<div class="infotext">
+				 Thank you for visiting KrassyBirds!
+            </div>
+		</div>
+	</div>
+</div>
+<p class="slide">
+	<a href="#" class="btn-slide"></a>
+</p>
+
+<!-- HEADER
+================================================== -->
+<div class="row">
+	<div class="headerlogo four columns">
+		<div class="logo">
+			<a href="home.html">
+                <img class="zoom" src="/static/img/home/bird32.png">
+			</a>
+		</div>
+	</div>
+	<div class="headermenu eight columns noleftmarg">
+		<nav id="nav-wrap">
+		<ul id="main-menu" class="nav-bar sf-menu">
+			<li class="current">
+			<a href="{% url 'home' %}">Home</a>
+			</li>
+            <li>
+			<a href="{% url 'search' %}">Birds</a>
+						<ul>
+						<li><a href="{% url 'birds' %}">Add a Bird</a></li>
+				</ul>
+			</li>
+<!--			{% if request.user.is_authenticated %}-->
+<!--			<li>-->
+<!--				<button id="showButton" class="submit">Submit Photo</button>-->
+<!--			</li>-->
+<!--			{%  endif  %}-->
+			<li>
+			<a href="{% url 'category' %}">Collections</a>
+					<ul>
+						<li><a href="{% url 'grid' %}">Test Grid View</a></li>
+				</ul>
+            </li>
+			<li>
+			<a href="#">About</a>
+		    </li>
+			{% if not user.is_authenticated %}
+				<li>
+				<a href="{% url 'login_request' %}">Login</a>
+				</li>
+				<li>
+				<a href="{% url 'signup' %}">SignUp</a>
+				</li>
+			{% else %}
+			<li>
+			<a href="#">{{user}}</a>
+				<ul>
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+					<li><a href="{% url 'change_password' %}">Change Password</a></li>
+			   </ul>
+			</li>
+			{% endif %}
+		</ul>
+		</nav>
+	</div>
+</div>
+<div class="clear">
+</div>
+<!--==================================================-->
+<section>
+<div align="center">
+  {% block content %}
+   {% endblock %}
+</div>
+</section>
+
+
+<!-- JAVASCRIPTS
+================================================== -->
+
+<!-- Javascript files placed here for faster loading -->
+<script src="{% static 'javascripts/foundation.min.js' %}">  </script>
+<script src="{% static 'javascripts/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'javascripts/elasticslideshow.js' %}"></script>
+<script src="{% static 'javascripts/jquery.carouFredSel-6.0.5-packed.js' %}"></script>
+<script src="{% static 'javascripts/jquery.cycle.js' %}"></script>
+<script src="{% static 'javascripts/app.js' %}"></script>
+<script src="{% static 'javascripts/modernizr.foundation.js' %}"></script>
+<script src="{% static 'javascripts/slidepanel.js' %}"></script>
+<script src="{% static 'javascripts/scrolltotop.js' %}"></script>
+<script src="{% static 'javascripts/hoverIntent.js' %}"></script>
+<script src="{% static 'javascripts/superfish.js' %}"></script>
+<script src="{% static 'javascripts/responsivemenu.js' %}"></script>
+<script src="{% static 'javascripts/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'javascripts/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'javascripts/custom.js' %}"></script>
+<script src="{% static 'javascripts/main.js' %}"></script>
+<!--<script src="{% static 'javascripts/jquery-3.5.1.js' %}"></script>-->
+
+
+
+</body>
+</html>

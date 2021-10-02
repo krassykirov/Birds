@@ -1,0 +1,86 @@
+{% extends "base_old.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+
+/*body {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;*/
+/*         background: url("../static/img/home/Buhli_1400x500-1400x500.jpg") no-repeat center center fixed;*/
+/*      -webkit-background-size: cover;*/
+/*      -moz-background-size: cover;*/
+/*      -o-background-size: cover;*/
+/*      background-size: cover;*/
+/*}*/
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+/* Create four equal columns 25% that sits next to each other */
+/* Create three equal columns 33% that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 4px 4px;
+}
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+</style>
+
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="left">
+				 Birds
+			</p>
+		</div>
+	</div>
+</div>
+<div class="hr">
+</div>
+
+<!-- Photo Grid -->
+ <div class="row">
+  <div class="column">
+  {% for img in images|slice:":10" %}
+      {% if img %}
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
+      {% endif %}
+  {% endfor %}
+  </div>
+  <div class="column">
+      {% for img in images|slice:"10:20" %}
+          {% if img %}
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
+          {% endif %}
+        {% endfor %}
+  </div>
+  <div class="column">
+    {% for img in images|slice:"20:30" %}
+        {% if img %}
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
+        {% endif %}
+        {% endfor %}
+  </div>
+  <div class="column">
+    {% for img in images|slice:"30:" %}
+        {% if img %}
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
+        {% endif %}
+        {% endfor %}
+  </div>
+</div>
+
+<hr>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base_old.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div id="subheader">
+	<div class="row">
+		<div class="eight columns">
+		    <p class="left">
+				 Birds
+			</p>
+		</div>
+	</div>
+</div>
+<div class="hr">
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+		{{ message }}
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="section" style="align-items: center">
+    {% if message %}
+        <div class="{{ alert }}" style="align-items: center">
+				 {{ message }} <a href="" class="close">x</a>
+		</div>
+    {% endif %}
+ {% include 'create_bird_form.html' %}
+</div>
+
+ <div>
+  {% include 'search_partial.html' %}
+ </div>
+<hr>
+
+
+{% endblock %}
+

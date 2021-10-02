@@ -1,0 +1,560 @@
+[
+  {"model": "website.birdcategory", "pk": 1, "fields": {"name": "Others"}},
+  {"model": "website.birdcategory", "pk": 2, "fields": {"name": "Owls"}},
+  {"model": "website.birdcategory", "pk": 3, "fields": {"name": "Hummingbirds"}},
+  {"model": "website.birdcategory", "pk": 4, "fields": {"name": "Parrots"}},
+  {"model": "website.birdcategory", "pk": 5, "fields": {"name": "Penguins"}},
+{
+  "model": "website.bird",
+  "pk": 2,
+  "fields": {
+    "bird_name": "trest",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/trest/images/bebitu.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:34:39.410Z",
+    "updated_on": "2021-08-17T04:34:39.410Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 3,
+  "fields": {
+    "bird_name": "green",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/green/images/green.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:34:54.794Z",
+    "updated_on": "2021-08-17T04:34:54.794Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 5,
+  "fields": {
+    "bird_name": "Woodpecker",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Woodpecker/images/Cinnamon_Woodpecker.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:35:24.935Z",
+    "updated_on": "2021-08-17T04:35:24.935Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 6,
+  "fields": {
+    "bird_name": "Green ss",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Green ss/images/Green_crowned_plovercrest.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:35:39.381Z",
+    "updated_on": "2021-08-17T04:35:39.381Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 10,
+  "fields": {
+    "bird_name": "bunting",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/bunting/images/Male_Painted_Bunting.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:37:02.273Z",
+    "updated_on": "2021-08-17T04:37:02.273Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 11,
+  "fields": {
+    "bird_name": "three",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/three/images/3.jpg",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T20:19:17.970Z",
+    "updated_on": "2021-09-23T20:19:17.970Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 12,
+  "fields": {
+    "bird_name": "small_one",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/small_one/images/bebitu_na_bebitu.jpg",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T20:19:40.146Z",
+    "updated_on": "2021-09-23T20:19:40.147Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 13,
+  "fields": {
+    "bird_name": "small_two",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/small_two/images/photo_2021-08-25_22-12-48.jpg",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T20:20:08.311Z",
+    "updated_on": "2021-09-23T20:20:08.311Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 14,
+  "fields": {
+    "bird_name": "Magnolia Wrabler",
+    "user": 1,
+    "url": null,
+    "bird_description": "Magnolia Wrabler",
+    "photo": "krassy@mail.bg/Magnolia Wrabler/images/Magnolia_Warbler_𝘚𝘦𝘵𝘰𝘱𝘩𝘢𝘨𝘢_𝘮𝘢𝘨𝘯𝘰𝘭𝘪𝘢.png",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T20:20:32.713Z",
+    "updated_on": "2021-09-23T20:20:32.713Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 15,
+  "fields": {
+    "bird_name": "Pic a Tete",
+    "user": 1,
+    "url": null,
+    "bird_description": "Magnolia Wrabler",
+    "photo": "krassy@mail.bg/Pic a Tete/images/Pic_à_tête_rouge_Melanerpes_érythrocephalus_dans_lIndia_jKuu2Vj.jpg",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T20:20:49.116Z",
+    "updated_on": "2021-09-23T20:20:49.116Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 16,
+  "fields": {
+    "bird_name": "Pompadur",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Pompadur/images/Pompadour_Cotinga_Brazil.jpg",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T20:21:10.796Z",
+    "updated_on": "2021-09-23T20:21:10.796Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 17,
+  "fields": {
+    "bird_name": "Lama Alpaka",
+    "user": 1,
+    "url": null,
+    "bird_description": "Lama Alpaka",
+    "photo": "krassy@mail.bg/Lama Alpaka/images/lama_alpaka.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:05:46.430Z",
+    "updated_on": "2021-09-23T21:05:46.430Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 18,
+  "fields": {
+    "bird_name": "Flamingo",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Flamingo/images/flamingo.jfif",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:08:18.980Z",
+    "updated_on": "2021-09-23T21:08:18.980Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 19,
+  "fields": {
+    "bird_name": "HoneyCreeper",
+    "user": 1,
+    "url": null,
+    "bird_description": "HoneyCreeper",
+    "photo": "krassy@mail.bg/HoneyCreeper/images/Honeycreeper_à_pattes_rouges_Cyanerpes_cyaneus_au_Panama.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:08:50.686Z",
+    "updated_on": "2021-09-23T21:08:50.686Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 20,
+  "fields": {
+    "bird_name": "Mango",
+    "user": 1,
+    "url": null,
+    "bird_description": "Mango",
+    "photo": "krassy@mail.bg/Mango/images/Green-breasted-Mango-very-nice.jpg",
+    "category": 3,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:09:15.922Z",
+    "updated_on": "2021-09-23T21:09:15.923Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 21,
+  "fields": {
+    "bird_name": "Piping PLoverrr",
+    "user": 1,
+    "url": null,
+    "bird_description": "Piping PLoverrr",
+    "photo": "krassy@mail.bg/Piping PLoverrr/images/piping-plover4.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:10:05.639Z",
+    "updated_on": "2021-09-23T21:10:05.639Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 22,
+  "fields": {
+    "bird_name": "Paruline",
+    "user": 1,
+    "url": null,
+    "bird_description": "Paruline",
+    "photo": "krassy@mail.bg/Paruline/images/Paruline_à_sourcils_blancs_mâle_Leptopoecile_sophiae_Inde.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:10:26.732Z",
+    "updated_on": "2021-09-23T21:10:26.732Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 23,
+  "fields": {
+    "bird_name": "Pardalote",
+    "user": 1,
+    "url": null,
+    "bird_description": "Pardalote",
+    "photo": "krassy@mail.bg/Pardalote/images/Spotted_Pardalote2.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:10:53.414Z",
+    "updated_on": "2021-09-23T21:10:53.414Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 24,
+  "fields": {
+    "bird_name": "Owl",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Owl/images/Бухал.png",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:11:23.751Z",
+    "updated_on": "2021-09-23T21:11:23.751Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 25,
+  "fields": {
+    "bird_name": "Tommit",
+    "user": 1,
+    "url": null,
+    "bird_description": "Tommit",
+    "photo": "krassy@mail.bg/Tommit/images/tommit.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:11:50.594Z",
+    "updated_on": "2021-09-23T21:11:50.594Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 26,
+  "fields": {
+    "bird_name": "Cotinga",
+    "user": 1,
+    "url": null,
+    "bird_description": "Cotinga",
+    "photo": "krassy@mail.bg/Cotinga/images/Lovely_Cotinga_Cotinga_amabilis_in_Costa_Rica.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:12:21.972Z",
+    "updated_on": "2021-09-23T21:12:21.972Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 27,
+  "fields": {
+    "bird_name": "Turaco",
+    "user": 1,
+    "url": null,
+    "bird_description": "Turaco",
+    "photo": "krassy@mail.bg/Turaco/images/Knysna_Turaco_Tauraco_corythaix_in_South_Africa.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:12:38.549Z",
+    "updated_on": "2021-09-23T21:12:38.549Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 28,
+  "fields": {
+    "bird_name": "Finch",
+    "user": 1,
+    "url": null,
+    "bird_description": "Finch",
+    "photo": "krassy@mail.bg/Finch/images/Red-crested_Finch.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:12:57.434Z",
+    "updated_on": "2021-09-23T21:12:57.434Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 29,
+  "fields": {
+    "bird_name": "Swallow",
+    "user": 1,
+    "url": null,
+    "bird_description": "Swallow",
+    "photo": "krassy@mail.bg/Swallow/images/Violet-green_Swallow.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:13:17.308Z",
+    "updated_on": "2021-09-23T21:13:17.308Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 30,
+  "fields": {
+    "bird_name": "Volcano",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Volcano/images/Volcano_Hummingbird.jpg",
+    "category": 3,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:13:51.689Z",
+    "updated_on": "2021-09-23T21:13:51.689Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 31,
+  "fields": {
+    "bird_name": "owll",
+    "user": 1,
+    "url": null,
+    "bird_description": "owll",
+    "photo": "krassy@mail.bg/owll/images/бУХИЛ.jpg",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:14:15.702Z",
+    "updated_on": "2021-09-23T21:14:15.702Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 32,
+  "fields": {
+    "bird_name": "owllsls",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/owllsls/images/Бухала.jpg",
+    "category": 2,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:14:34.872Z",
+    "updated_on": "2021-09-23T21:14:34.872Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 33,
+  "fields": {
+    "bird_name": "Pigeon",
+    "user": 1,
+    "url": null,
+    "bird_description": "Pigeon",
+    "photo": "krassy@mail.bg/Pigeon/images/Yellow-footed_Green_Pigeon.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-09-23T21:14:58.403Z",
+    "updated_on": "2021-09-23T21:14:58.403Z",
+    "likes": []
+  }
+},
+
+
+  {
+    "model": "website.birduser",
+    "pk": 1,
+    "fields":
+  {
+    "password": "pbkdf2_sha256$216000$17DnWaB73e6I$UhCIgMEqiclfUZz6Ps7tajdFAlra9Fa95pj6hVcvqZ8=",
+    "last_login": "2021-09-19T10:21:43.635Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "", "is_staff": true, "is_active": true,
+    "date_joined": "2021-09-19T10:20:19.245Z",
+    "email": "krassy@mail.bg",
+    "groups": [],
+    "user_permissions": []}
+},
+  {
+  "model": "website.bird",
+  "pk": 2,
+  "fields": {
+    "bird_name": "trest",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/trest/images/bebitu.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:34:39.410Z",
+    "updated_on": "2021-08-17T04:34:39.410Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 3,
+  "fields": {
+    "bird_name": "green",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/green/images/green.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:34:54.794Z",
+    "updated_on": "2021-08-17T04:34:54.794Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 5,
+  "fields": {
+    "bird_name": "Woodpecker",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Woodpecker/images/Cinnamon_Woodpecker.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:35:24.935Z",
+    "updated_on": "2021-08-17T04:35:24.935Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 6,
+  "fields": {
+    "bird_name": "Green ss",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/Green ss/images/Green_crowned_plovercrest.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:35:39.381Z",
+    "updated_on": "2021-08-17T04:35:39.381Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 10,
+  "fields": {
+    "bird_name": "bunting",
+    "user": 1,
+    "url": null,
+    "bird_description": "",
+    "photo": "krassy@mail.bg/bunting/images/Male_Painted_Bunting.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-08-17T04:37:02.273Z",
+    "updated_on": "2021-08-17T04:37:02.273Z",
+    "likes": []
+  }
+}
+]

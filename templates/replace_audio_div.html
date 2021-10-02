@@ -1,0 +1,10 @@
+ Published on {{bird.created_on|date:"F d Y"}}
+	{% if bird.user %}
+		 by	{{ bird.user }}
+	{% endif %}
+     {% if bird.songs %}
+      <audio src="../static/img/{{ bird.songs.song_name }}" controls></audio>
+       {% else %}
+       <p>No Audio uploaded yet</p>
+         <audio src="../static/img/{{ bird.songs.song_name }}" controls></audio>
+     {% endif %}

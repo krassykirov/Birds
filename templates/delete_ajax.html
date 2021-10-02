@@ -1,0 +1,18 @@
+<div class="container" id="delete-bird-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.8); z-index: 1000; display: none">
+<span onclick=document.getElementById('delete-bird-modal').style.display='none' class="closeModal" title="Close" style="position: fixed; top: 65px; right: 65px">X</span>
+        <div class="card" style="margin-top: 255px">
+            <h3>Are you sure?</h3>
+            <h6>You're about to delete {{bird.bird_name}}. Please confirm.</h6>
+            <form action="" method="post" id="delete-bird">
+             {% if message  %}
+             <div style="align-items: center; color:darkblue; font-size: 16px" id="message_image">
+               {{ message }} <a onclick="document.getElementById('delete-bird-modal').style.display='none'" class="close">X</a>
+             </div>
+                {% endif %}
+                <input type="hidden" id="delete_id" value="{{bird.id}}">
+                <input class="secondary button" type="button" value="Cancel" onclick="document.getElementById('delete-bird-modal').style.display='none'">
+                <input class="alert button" type="submit" value="Confirm" name="delete" id="delete-bird-confirm-btn">
+            </form>
+        </div>
+    </div>
+

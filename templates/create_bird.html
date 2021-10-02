@@ -1,0 +1,131 @@
+{% extends "base_old.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+         background: url("/static/img/home/Penguins--1400x500.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+.box {
+    border-radius: 25px;
+}
+
+.box input[type="submit"] {
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: cadetblue;
+    border-radius: 25px;
+    transition: 0.25s;
+    cursor: pointer
+}
+::placeholder {
+    color: darkgrey;
+}
+
+.box input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden ;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    cursor: pointer;
+    text-align: center;
+}
+
+/*.box input[type="file"] + label{*/
+/*    background: url("/static/images/info.png");*/
+/*}*/
+
+
+.box input[type="text"],
+.box input[type="url"],
+.box input[type="file"],
+.box input[type="image"],
+.box input[type="select"],
+.box input[type="option"],
+.box input[type="password"] {
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 15px 15px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.card {
+    margin-bottom: 20px;
+    border: none
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71
+}
+
+.box input[type="submit"] {
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    border: 0;
+    background: cadetblue;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: none;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.box h1,h5,label {
+    color: white;
+    font-weight: 500
+}
+
+.box input[type="submit"]:hover {
+    background: #2ecc71
+}
+</style>
+{% if request.user.is_authenticated %}
+      {% if message  %}
+                <div class="my_message" style="align-items: center">
+             {{ message }} <a href="" class="close">x</a>
+              </div>
+      {% endif %}
+  <div id="replaceable">
+    {% include 'create_bird_form.html' %}
+  </div>
+
+{% endif %}
+{% endblock %}
+<!--<script src="{% static 'javascripts/jquery-3.5.1.js' %}"></script>-->
+<!--<script src="{% static 'javascripts/main.js' %}"></script>-->
+

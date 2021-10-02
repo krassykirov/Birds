@@ -1,0 +1,33 @@
+{% extends "base_old.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div id="subheader">
+	<div class="row">
+		<div class="six columns">
+			</div>
+		<div class="eight columns">
+			<div class="row collapse">
+				<div class="ten mobile-three columns">
+			<input type="text" id="user-input" class="nomargin" placeholder="Search for Birds..">
+				</div>
+				<i id="search-icon"; style="display: none" class="left-align"> Searching.. </i>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="hr">
+</div>
+
+  <div id="replaceable-content" class="col-6">
+    {% include 'search_partial.html' %}
+  </div>
+ <hr>
+
+  <div>
+    {% include 'footer.html' %}
+  </div>
+
+{% endblock %}
+

@@ -1,0 +1,162 @@
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+         background: url("/static/img/home/Penguins--1400x500.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+.box {
+    border-radius: 25px;
+}
+
+.box input[type="submit"] {
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: cadetblue;
+    border-radius: 25px;
+    transition: 0.25s;
+    cursor: pointer
+}
+::placeholder {
+    color: darkgrey;
+}
+
+.box input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden ;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    cursor: pointer;
+    text-align: center;
+}
+
+/*.box input[type="file"] + label{*/
+/*    background: url("/static/images/info.png");*/
+/*}*/
+
+
+.box input[type="text"],
+.box input[type="url"],
+.box input[type="file"],
+.box input[type="image"],
+.box input[type="select"],
+.box input[type="option"],
+.box input[type="password"] {
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 15px 15px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.card {
+    margin-bottom: 20px;
+    border: none
+}
+
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71
+}
+
+.box input[type="submit"] {
+    font-family: DroidSansRegular, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    border: 0;
+    background: cadetblue;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: none;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.box h1,h5,label {
+    color: white;
+    font-weight: 500
+}
+
+.box input[type="submit"]:hover {
+    background: #2ecc71
+}
+.closeModal {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer
+}
+
+</style>
+
+<div class="container" id="bird-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.7); z-index: 1000; display: block">
+  <span onclick="document.getElementById('bird-modal').style.display='none'" class="closeModal" title="Close" style="position: fixed; top: 65px; right: 65px">&times;</span>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+            {% if message  %}
+                <div class={{ alert }} style="align-items: center" style="color:darkblue; font-size: 16px">
+             {{ message }} <a href="" class="close">x</a>
+              </div>
+                {% if url_to_bird  %}
+        <a href="{{ url_to_bird }}" style="color:darkblue; font-size: 14px">Go to {{bird.bird_name}} Details</a>
+                {% endif  %}
+            {% endif  %}
+<form class="box" method="post" id="create-bird" enctype="multipart/form-data" style="width: 500px; margin-top: 65px; display: block" name="photo">
+    <fieldset style="max-width: 330px; background-color: black; border-radius: 25px"; >
+         {% csrf_token %}
+            {% if message %}
+      {% endif %}
+         <h5>Create a Bird Record</h5>
+           {% for field in form %}
+                    {{ field.label_tag }}
+                       {{ field }}
+           {%  endfor %}
+      {% if form.errors %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+     <input type="submit" id="create_bird_button">
+      </fieldset>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

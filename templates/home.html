@@ -1,0 +1,216 @@
+{% extends "base_old.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- SLIDER 
+================================================== -->
+<div id="ei-slider" class="ei-slider">
+	<ul class="ei-slider-large">
+		<li>
+		<img src="../static/img/home/Buhli_1400x500-1400x500.jpg" alt="Buhli" class="responsiveslide">
+		<div class="ei-title">
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/bird-nests-1400x500.jpg" alt="bird-nests" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>BlueBird</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/budget-kenya-flamingos-1400x500.jpg" alt="flamingos" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Lebed</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/Red-Grouse-lr-header-1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/ribarche-1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/Curlew-1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/owl1600-72dpi-1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/egrets-1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/lapwing-header-1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/Penguins--1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+		<li>
+		<img src="../static/img/home/Penguins--1400x500.jpg" alt="Penguins" class="responsiveslide">
+		<div class="ei-title">
+<!--			<h2>Flamingo</h2>-->
+		</div>
+		</li>
+	</ul>
+	<!-- slider-thumbs -->
+	<ul class="ei-slider-thumbs">
+		<li class="ei-slider-element">Current</li>
+		<li><a href="#">Slide 1</a><img src="../static/img/home/Buhli_1400x500-1400x500.jpg" class="slideshowthumb" alt="thumb01"/></li>
+		<li><a href="#">Slide 2</a><img src="../static/img/home/bird-nests-1400x500.jpg" class="slideshowthumb" alt="thumb02"/></li>
+		<li><a href="#">Slide 3</a><img src="../static/img/home/budget-kenya-flamingos-1400x500.jpg" class="slideshowthumb" alt="thumb03"/></li>
+    	<li><a href="#">Slide 4</a><img src="../static/img/home/Red-Grouse-lr-header-1400x500.jpg" class="slideshowthumb" alt="thumb04"/></li>
+    	<li><a href="#">Slide 5</a><img src="../static/img/home/ribarche-1400x500.jpg" class="slideshowthumb" alt="thumb05"/></li>
+    	<li><a href="#">Slide 6</a><img src="../static/img/home/Curlew-1400x500.jpg" class="slideshowthumb" alt="thumb06"/></li>
+    	<li><a href="#">Slide 7</a><img src="../static/img/home/owl1600-72dpi-1400x500.jpg" class="slideshowthumb" alt="thumb07"/></li>
+    	<li><a href="#">Slide 8</a><img src="../static/img/home/egrets-1400x500.jpg" class="slideshowthumb" alt="thumb08"/></li>
+    	<li><a href="#">Slide 9</a><img src="../static/img/home/lapwing-header-1400x500.jpg" class="slideshowthumb" alt="thumb09"/></li>
+    	<li><a href="#">Slide 10</a><img src="../static/img/home/Penguins--1400x500.jpg" class="slideshowthumb" alt="thumb10"/></li>
+    	<li><a href="#">Slide 11</a><img src="../static/img/home/Penguins--1400x500.jpg" class="slideshowthumb" alt="thumb11"/></li>
+  	</ul>
+</div>
+<div class="minipause">
+</div>
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="text-center">
+				 Learning Django test website devoted to Birds!
+			</p>
+		</div>
+	</div>
+</div>
+<!-- ANIMATED COLUMNS
+================================================== -->
+<div class="row">
+	<div class="twelve columns">
+		<ul class="ca-menu">
+			<li>
+			<a href="{% url 'search' %}">
+			<span class="ca-icon"><i class="fa fa-heart"></i></span>
+			<div class="ca-content">
+				<h2 class="ca-main">We love <br/> Birds</h2>
+				<h3 class="ca-sub">Have a look</h3>
+			</div>
+			</a>
+			</li>
+			<li>
+			<a href="#">
+			<span class="ca-icon"><i class="fa fa-bullhorn"></i></span>
+			<div class="ca-content">
+				<h2 class="ca-main">We love <br/>Birds Song </h2>
+				<h3 class="ca-sub">Hear some</h3>
+			</div>
+			</a>
+			</li>
+			<li>
+			<a href="https://www.djangoproject.com/start/overview" target="_blank">
+			<span class="ca-icon"><i class="fa fa-user"></i></span>
+			<div class="ca-content">
+				<h2 class="ca-main">Learning <br/>Django</h2>
+				<h3 class="ca-sub">Try it</h3>
+			</div>
+			</a>
+			</li>
+			<li>
+			<a href="{% url 'search' %}">
+			<span class="ca-icon"><i class="fa fa-camera"></i></span>
+			<div class="ca-content">
+				<h2 class="ca-main">Birds<br/> Photos</h2>
+				<h3 class="ca-sub">Serach for a Bird</h3>
+			</div>
+			</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- CONTENT 
+================================================== -->
+<div class="row">
+	<div class="twelve columns">
+		<div class="centersectiontitle">
+			<h4>Theme by WowThemes.net</h4>
+		</div>
+	</div>
+	<div class="four columns">
+		<h5>Photography</h5>
+		<p>
+			 Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
+		</p>
+		<p>
+			<a href="#" class="readmore">Learn more</a>
+		</p>
+	</div>
+	<div class="four columns">
+		<h5>Artwork</h5>
+		<p>
+			 Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
+		</p>
+		<p>
+			<a href="#" class="readmore">Learn more</a>
+		</p>
+	</div>
+	<div class="four columns">
+		<h5>Logos</h5>
+		<p>
+			 Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
+		</p>
+		<p>
+			<a href="#" class="readmore">Learn more</a>
+		</p>
+	</div>
+</div>
+<div class="hr">
+</div>
+<!-- TESTIMONIALS 
+================================================== -->
+<div class="row">
+	<div class="twelve columns">
+		<div id="testimonials">
+			<blockquote>
+				<p>
+					 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis." <cite>Martin - NY</cite>
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco." <cite>Sandra - LA</cite>
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco." <cite>Jason - MA</cite>
+				</p>
+			</blockquote>
+		</div>
+		<!--end testimonials-->
+	</div>
+</div>
+
+  <div>
+    {% include 'footer.html' %}
+  </div>
+
+{% endblock %}

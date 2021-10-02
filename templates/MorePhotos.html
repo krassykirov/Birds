@@ -1,0 +1,12 @@
+<div class="sidebartitle" align="center">
+<h5> More Photos </h5>
+</div>
+<table class="table table-striped">
+    <tbody>
+      <tr>
+        {% for img in bird.images.all %}
+         <img class="zoom" alt="{{ bird.bird_name }}" src="../static/img/{{ img }}" style="max-width:420px; height:320px;object-fit: contain !important">
+         {% endfor %}
+      </tr>
+	</tbody>
+</table>

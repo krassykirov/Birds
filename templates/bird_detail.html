@@ -1,0 +1,122 @@
+{% extends "base_old.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="{% static 'stylesheets/style.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets//skins/blue.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/responsive.css' %}">
+</head>
+
+<!-- SUBHEADER
+================================================== -->
+<div id="subheader">
+	<div class="row">
+		<div class="twelve columns">
+			<p class="left">
+				 DETAILS
+			</p>
+			<p class="right">
+				<a href="{% url 'search' %}">View more Birds</a>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="hr">
+</div>
+
+<div class="two columns">
+<h6 class="sidebartitle">Other Birds</h6>
+    {% for bird in birds|slice:":10" %}
+       <a href="{{bird.get_absolute_url}}" class="tags">{{bird.bird_name}}</a>
+    {% endfor %}
+
+</div>
+<!-- CONTENT
+================================================== -->
+<div class="row">
+	<div class="six columns">
+		<div class="sectiontitle" id="edit_bird_name">
+			 {% include 'replace_edit_div.html' %}
+		</div>
+		<div class="panel" id="replaceable-audio">
+			{% include 'replace_audio_div.html' %}
+		</div>
+		<dl class="tabs">
+			<dd class="active"><a href="#Image">Image</a></dd>
+			<dd><a href="#Audio">Audio</a></dd>
+			<dd><a href="#Edit">Edit</a></dd>
+            <dd><a href="#Delete">Delete</a></dd>
+		</dl>
+		<ul class="tabs-content">
+		  <li class="active" id="ImageTab">
+			<p> Upload an Image </p>
+			 <button name="upload" class="submit" id="upload-image-btn">Image</button>
+			</li>
+			<li id="AudioTab">
+				<p>Upload an Audio </p>
+				 <button name="audio" class="submit" id="upload-audio-btn">Audio</button>
+			</li>
+			<li id="EditTab">
+			<p>Edit details </p>
+				<button type="submit" name="edit" class="submit" id="edit-btn">Edit </button>
+            </li>
+            <li id="DeleteTab">
+				<p>Delete from Collection</p>
+				  <button type="submit" value="ok" class="submit" id="delete-bird-btn">Delete</button>
+			</li>
+		</ul>
+	</div>
+
+	<div class="five columns">
+		<div class="panel-collapse">
+		     <img src="../static/img/{{ bird.photo }}" style="max-width:450px; max-height:360px; width:auto; height:auto; !important" alt="{{ bird.bird_name }}"/>
+	    <blockquote class="overlay" style="color: #8ed3e7">
+                    <span class="ca-icon" style="color:#55a2a6; font-size:20px;color: darkseagreen;">
+                    </span>
+                </blockquote>
+			</div>
+		</div>
+	</div>
+
+<div class="hr">
+
+{% if request.user.is_authenticated %}
+      {% if message  %}
+             <div class={{ alert }} style="align-items: center">
+             {{ message }} <a href="" class="close">x</a>
+             </div>
+      {% endif %}
+
+  <div id="replace-image-ajax">
+    {% include 'upload_image_ajax-modal.html' %}
+  </div>
+
+  <div id="replace-audio-ajax">
+    {% include 'upload_audio_ajax-modal.html' %}
+  </div>
+
+    <div id="delete-bird-ajax">
+    {% include 'delete_ajax.html' %}
+   </div>
+
+  <div id="replaceable-edit-ajax">
+    {% include 'edit_ajax_modal.html' %}
+   </div>
+
+{% endif %}
+
+</div>
+
+  <div id="replaceable-photos">
+    {% include 'MorePhotos.html' %}
+  </div>
+
+  <div>
+    {% include 'footer.html' %}
+  </div>
+
+{% endblock %}
