@@ -18,8 +18,8 @@ def get_cred_from_key_vault():
     credentials = AADTokenCredentials(mgmt_token, CLIENT_ID)
     token = credentials.token['access_token']
     print('token:', token)
-    user = "https://krassykeyvault.vault.azure.net/secrets/user?api-version=2016-10-01"
-    password = "https://krassykeyvault.vault.azure.net/secrets/passwd?api-version=2016-10-01"
+    user = "https://{KEYVAULT}.vault.azure.net/secrets/user?api-version=2016-10-01"
+    password = "https://{KEYVAULT}.vault.azure.net/secrets/passwd?api-version=2016-10-01"
     headers = {'Authorization': 'Bearer {}'.format(token)}
     user = requests.get(user, headers=headers).json()
     passwd = requests.get(password, headers=headers).json()
@@ -40,7 +40,7 @@ def send_email(sender, instance, created, **kwargs):
         msg = MIMEMultipart()
         message = f"Signal from {sender} has been received received! f'{instance.email} have been created!'"
         msg['From'] = f'{u}'
-        msg['To'] = 'krassy.kirov@gmail.com'
+        msg['To'] = 'myemail@email.com'
         msg['Subject'] = "This is a TEST"
 
         msg.attach(MIMEText(message, 'plain'))
