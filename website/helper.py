@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def get_cred_from_key_vault():
-    authority_host_uri = 'https://login.microsoftonline.com/krassykirovoutlook.onmicrosoft.com'
+    authority_host_uri = 'https://login.microsoftonline.com/{domain}.onmicrosoft.com'
     resource_uri = 'https://vault.azure.net'
     CLIENT_ID = ''
     CLIENT_SECRET = ''
