@@ -40,7 +40,7 @@ def send_email(sender, instance, created, **kwargs):
         msg = MIMEMultipart()
         message = f"Signal from {sender} has been received received! f'{instance.email} have been created!'"
         msg['From'] = f'{u}'
-        msg['To'] = 'myemail@email.com'
+        msg['To'] = '{}@{}).com'
         msg['Subject'] = "This is a TEST"
 
         msg.attach(MIMEText(message, 'plain'))
