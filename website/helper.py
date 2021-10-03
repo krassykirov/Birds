@@ -1,23 +1,50 @@
 from PIL import Image
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 import json, requests, os
+from msrestazure.azure_active_directory import AADTokenCredentials
+import adal
+from .signals import *
+from .models import BirdUser
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
-def get_app_config_data_from_key_vault():
+def get_cred_from_key_vault():
+    authority_host_uri = 'https://login.microsoftonline.com/krassykirovoutlook.onmicrosoft.com'
+    resource_uri = 'https://vault.azure.net'
+    CLIENT_ID = ''
+    CLIENT_SECRET = ''
+    context = adal.AuthenticationContext(authority_host_uri, api_version=None)
+    mgmt_token = context.acquire_token_with_client_credentials(resource_uri, CLIENT_ID, CLIENT_SECRET)
+    credentials = AADTokenCredentials(mgmt_token, CLIENT_ID)
+    token = credentials.token['access_token']
+    print('token:', token)
+    user = "https://krassykeyvault.vault.azure.net/secrets/user?api-version=2016-10-01"
+    password = "https://krassykeyvault.vault.azure.net/secrets/passwd?api-version=2016-10-01"
+    headers = {'Authorization': 'Bearer {}'.format(token)}
+    user = requests.get(user, headers=headers).json()
+    passwd = requests.get(password, headers=headers).json()
+    print('user_value,pass_value', user, passwd)
+    user = user.get('value')
+    password = passwd.get('value')
+    return user, password
 
-    msi_endpoint = os.environ.get("MSI_ENDPOINT")
-    msi_secret = os.environ.get("MSI_SECRET")
-    token_auth_uri = f"{msi_endpoint}?resource=https://vault.azure.net&api-version=2017-09-01"
-    head_msi = {'Secret': msi_secret}
-    resp = requests.get(token_auth_uri, headers=head_msi)
-    access_token = resp.json()['access_token']
-    con_str = "https://krassykeyvault.vault.azure.net/secrets/connstr?api-version=2016-10-01"
-    app_config = "https://krassykeyvault.vault.azure.net/secrets/data?api-version=2016-10-01"
-    headers = {'Authorization': 'Bearer {}'.format(access_token)}
-    constr = requests.get(con_str, headers=headers).json()
-    app_data = requests.get(app_config, headers=headers).json()
-    constr = constr.get('value')
-    app_data = json.loads(app_data.get('value'))
-    return constr, app_data
+#@receiver(post_save,sender=BirdUser)
+def send_email(sender, instance, created, **kwargs):
+    if created:
+        u, p = get_cred_from_key_vault()
+        print(f'{instance.email} have been created!')
+        s = smtplib.SMTP(host='smtp-mail.outlook.com', port=587)
+        s.starttls()
+        s.login(user=u,password=p)
+
+        msg = MIMEMultipart()
+        message = f"Signal from {sender} has been received received! f'{instance.email} have been created!'"
+        msg['From'] = f'{u}'
+        msg['To'] = 'krassy.kirov@gmail.com'
+        msg['Subject'] = "This is a TEST"
+
+        msg.attach(MIMEText(message, 'plain'))
+        s.send_message(msg)
 
 def make_thumbnail(filename):
     allowed_types = ['jpg', 'jpeg', 'gif']
@@ -90,6 +117,7 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
 
 #Resizes an image and keeps aspect ratio. Set mywidth to the desired with in pixels.
 

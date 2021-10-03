@@ -1,23 +1,19 @@
 from django.shortcuts import render,redirect,get_object_or_404,reverse
-from django.contrib import messages
 from .models import Bird,BirdImage,BirdCategory,BirdSong,BirdUser
 from django.template.loader import render_to_string
 from django.http import JsonResponse,HttpResponse
 from django.db.models import Q,F
 from django.db import transaction
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
-from django.views.generic import View
-import requests,os,pathlib
-import urllib.parse, json
-from django.core.files import File
+import requests,os, smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import urllib.parse
 from .forms import BirdForm,BirdImageForm,BirdSongForm,EditBirdForm
-
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST,require_GET
 from django.views.decorators.csrf import csrf_exempt
 from django import template
-from django.template.defaultfilters import stringfilter
 from .helper import make_thumbnail,filter_form_errors
 register = template.Library()
 
@@ -370,4 +366,5 @@ def edit_bird(request):
                 )
                 data_dict = {"html_from_view": html, 'error': error}
                 return JsonResponse(data=data_dict, safe=False)
+
 

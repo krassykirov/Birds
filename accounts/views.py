@@ -19,7 +19,6 @@ def home(request):
     else:
         return render(request, "home.html")
 
-
 @transaction.atomic
 def signup_view(request):
     if request.user.is_authenticated:
