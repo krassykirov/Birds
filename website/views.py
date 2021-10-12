@@ -5,17 +5,13 @@ from django.http import JsonResponse,HttpResponse
 from django.db.models import Q,F
 from django.db import transaction
 from django.conf import settings
-import requests,os, smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import requests,os
 import urllib.parse
 from .forms import BirdForm,BirdImageForm,BirdSongForm,EditBirdForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST,require_GET
 from django.views.decorators.csrf import csrf_exempt
-from django import template
 from .helper import make_thumbnail,filter_form_errors
-register = template.Library()
 
 def urldecode(value):
   return urllib.parse.unquote(value)
@@ -143,7 +139,8 @@ def create_bird(request):
             bird_name = request.POST.get('bird_name').strip()
             url       = request.POST.get('url')
             response  = requests.get(url)
-            user_dir  = request.user.email
+            user_dir  = request.user.email #.split('@')[0]
+            print('user_dir:',user_dir)
             bird_dir  = bird_name
             dir       =  os.path.join(settings.MEDIA_ROOT, user_dir, bird_dir)
             if not os.path.exists(dir):
@@ -182,7 +179,7 @@ def create_bird(request):
             ctx = {"message": message,
                    'error': message,
                    'alert': alert,
-                   'form': BirdForm()}
+                   'form': BirdForm()},
             html = render_to_string(
                 template_name="create_bird_form.html",
                 context=ctx
@@ -349,7 +346,7 @@ def edit_bird(request):
                    template_name="replace_edit_div.html",
                    context=ctx
                )
-               data_dict = {"html_from_view": html,"success": 'Bird Edit was Successfull'}
+               data_dict = {"html_from_view": html,'success': 'success'}
                return JsonResponse(data=data_dict, safe=False)
 
             else:
@@ -357,7 +354,7 @@ def edit_bird(request):
                 error = filter_form_errors(error_msg)
                 ctx = { "message": error,
                         'error': error,
-                        'edit_bird_form': EditBirdForm()
+                        'edit_bird_form': form
                        }
                 print('context:', ctx)
                 html = render_to_string(

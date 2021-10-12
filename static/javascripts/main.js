@@ -137,6 +137,7 @@ $('#create-bird').on('submit', function (event) {
         event.preventDefault();
         // console.log($(event.target))
         var formData = new FormData();
+        var bird_name = $('#id_bird_name').val()
         formData.append('bird_name', $('#id_bird_name').val());
         formData.append('url', $('#id_url').val());
         formData.append('bird_description', $('#id_bird_description').val());
@@ -158,12 +159,15 @@ $('#create-bird').on('submit', function (event) {
                 }
                 if (response['error']){
                       console.log("Error!:",response['error'])
-                      birds_form.html(html)
+                      alert(response['error'])
+                      //birds_form.html(html)
+                      window.location.href = 'add_bird'
                   }
             },
             error: function (xhr, errmsg, err) {
                 console.log('error:', err)
                 console.log(xhr.status + ":" + xhr.responseText)
+                window.location.href = 'add_bird'
             }
         })
     })

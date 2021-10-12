@@ -1,50 +1,49 @@
 from PIL import Image
 import json, requests, os
-from msrestazure.azure_active_directory import AADTokenCredentials
-import adal
+# from msrestazure.azure_active_directory import AADTokenCredentials
+# import adal
 from .signals import *
 from .models import BirdUser
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+# import smtplib
+# from email.mime.multipart import MIMEMultipart
+# from email.mime.text import MIMEText
 
-def get_cred_from_key_vault():
-    authority_host_uri = 'https://login.microsoftonline.com/{domain}.onmicrosoft.com'
-    resource_uri = 'https://vault.azure.net'
-    CLIENT_ID = ''
-    CLIENT_SECRET = ''
-    context = adal.AuthenticationContext(authority_host_uri, api_version=None)
-    mgmt_token = context.acquire_token_with_client_credentials(resource_uri, CLIENT_ID, CLIENT_SECRET)
-    credentials = AADTokenCredentials(mgmt_token, CLIENT_ID)
-    token = credentials.token['access_token']
-    print('token:', token)
-    user = "https://{KEYVAULT}.vault.azure.net/secrets/user?api-version=2016-10-01"
-    password = "https://{KEYVAULT}.vault.azure.net/secrets/passwd?api-version=2016-10-01"
-    headers = {'Authorization': 'Bearer {}'.format(token)}
-    user = requests.get(user, headers=headers).json()
-    passwd = requests.get(password, headers=headers).json()
-    print('user_value,pass_value', user, passwd)
-    user = user.get('value')
-    password = passwd.get('value')
-    return user, password
-
-#@receiver(post_save,sender=BirdUser)
-def send_email(sender, instance, created, **kwargs):
-    if created:
-        u, p = get_cred_from_key_vault()
-        print(f'{instance.email} have been created!')
-        s = smtplib.SMTP(host='smtp-mail.outlook.com', port=587)
-        s.starttls()
-        s.login(user=u,password=p)
-
-        msg = MIMEMultipart()
-        message = f"Signal from {sender} has been received received! f'{instance.email} have been created!'"
-        msg['From'] = f'{u}'
-        msg['To'] = '{}@{}).com'
-        msg['Subject'] = "This is a TEST"
-
-        msg.attach(MIMEText(message, 'plain'))
-        s.send_message(msg)
+# def get_cred_from_key_vault():
+#     authority_host_uri = 'https://login.microsoftonline.com/{domain}.onmicrosoft.com'
+#     resource_uri = 'https://vault.azure.net'
+#     CLIENT_ID = ''
+#     CLIENT_SECRET = ''
+#     context = adal.AuthenticationContext(authority_host_uri, api_version=None)
+#     mgmt_token = context.acquire_token_with_client_credentials(resource_uri, CLIENT_ID, CLIENT_SECRET)
+#     credentials = AADTokenCredentials(mgmt_token, CLIENT_ID)
+#     token = credentials.token['access_token']
+#     print('token:', token)
+#     user = "https://{KEYVAULT}.vault.azure.net/secrets/user?api-version=2016-10-01"
+#     password = "https://{KEYVAULT}.vault.azure.net/secrets/passwd?api-version=2016-10-01"
+#     headers = {'Authorization': 'Bearer {}'.format(token)}
+#     user = requests.get(user, headers=headers).json()
+#     passwd = requests.get(password, headers=headers).json()
+#     print('user_value,pass_value', user, passwd)
+#     user = user.get('value')
+#     password = passwd.get('value')
+#     return user, password
+# #@receiver(post_save,sender=BirdUser)
+# def send_email(sender, instance, created, **kwargs):
+#     if created:
+#         u, p = get_cred_from_key_vault()
+#         print(f'{instance.email} have been created!')
+#         s = smtplib.SMTP(host='smtp-mail.outlook.com', port=587)
+#         s.starttls()
+#         s.login(user=u,password=p)
+#
+#         msg = MIMEMultipart()
+#         message = f"Signal from {sender} has been received received! f'{instance.email} have been created!'"
+#         msg['From'] = f'{u}'
+#         msg['To'] = '{}@{}).com'
+#         msg['Subject'] = "This is a TEST"
+#
+#         msg.attach(MIMEText(message, 'plain'))
+#         s.send_message(msg)
 
 def make_thumbnail(filename):
     allowed_types = ['jpg', 'jpeg', 'gif']

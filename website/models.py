@@ -68,8 +68,8 @@ class Bird(models.Model):
     # TODO: add name validation startswith number and others
     bird_name = models.CharField(max_length=100,unique=True,blank=False,editable=True,
                                  validators=[RegexValidator(
-                                     regex='[a-zA-Z\u0400-\u04FF]$', # /[\w\u0400-\u04ff\u0500-\u052f\ua640-\ua69f\u1d2b-\u1d78]+/
-                                     message='Name should contain only alphabets not numbers or other special characters',
+                                     regex=  '^[A-Za-z0-9? ,_-]+$', #'[a-zA-Z\u0400-\u04FF]$', # /[\w\u0400-\u04ff\u0500-\u052f\ua640-\ua69f\u1d2b-\u1d78]+/
+                                     message='Name should contain only alphabets or numbers not other special characters',
                                      )]
                                  )
     user = models.ForeignKey('BirdUser', null=True, related_name='added_by', on_delete=models.CASCADE)
