@@ -240,9 +240,7 @@ def upload_image(request):
             )
             data_dict = {"html_from_view": html, 'error': "You dont have permissions to upload!"}
             return JsonResponse(data=data_dict, safe=False)
-        # print('bird.images.all.length',len(bird.images))
         if form.is_valid():
-                print("Valid Form")
                 img_obj = form.instance
                 img_obj.bird = bird
                 img_obj.user = request.user
@@ -293,7 +291,7 @@ def upload_audio(request):
                    'form': BirdImageForm()
                    }
             html = render_to_string(
-                template_name="upload_image_ajax-modal.html",
+                template_name="upload_audio_ajax-modal.html",
                 context = ctx
             )
             data_dict = {"html_from_view": html, 'error': "You dont have permissions to upload!"}
@@ -373,7 +371,7 @@ def edit_bird(request):
         if not bird.user_id == request.user.id:
             ctx = {"message": "You dont have permissions!",
                    'url_to_bird': bird.get_absolute_url(),
-                   'form': BirdImageForm()
+                   'form': EditBirdForm(instance=bird)
                    }
             html = render_to_string(
                 template_name="edit_ajax_modal.html",

@@ -215,8 +215,7 @@ $(document).ready(function() {
                          console.log('Error response',response['error'])
                          $('#replace-image-ajax').html(html)
                          $('#upload-image-modal').css('display','block')
-                         window.location.href = response['url_to_bird']
-                         // window.location.href = "/birds/" + $('#bird_id').val();
+                         //window.location.href = response['url_to_bird']
                      }
                 },
                 error: function (xhr, errmsg, err) {
@@ -351,14 +350,14 @@ $(document).ready(function() {
                          edit_div.html(html)
                          $('#edit-bird-modal').css('display', 'block');
                          document.getElementById('edit-bird').reset();
-                         window.location.href = response['url_to_bird']
+                         //window.location.href = response['url_to_bird']
                       }
                   },
             error: function (xhr, errmsg, err) {
                 console.log('error:', err)
                 console.log(xhr.status + ":" + xhr.responseText)
                 document.getElementById('edit-bird').reset();
-                window.location.href = response['url_to_bird']
+                //window.location.href = response['url_to_bird']
             }
         })
     })
