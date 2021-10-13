@@ -151,14 +151,6 @@ def has_permission(f):
             return f(request, *args, **kwargs)
     return wrapped
 
-def login_required(fn):
-    async def wrapped(request, *args, **kwargs):
-        session = await get_session(request)
-        if not 'username' in session:
-            return web.HTTPFound('/auth') # return web.HTTPFound(request.rel_url) not working
-        return await fn(request, *args, **kwargs)
-
-    return wrapped
 
 #Resizes an image and keeps aspect ratio. Set mywidth to the desired with in pixels.
 
