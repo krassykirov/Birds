@@ -179,7 +179,7 @@ $(document).ready(function() {
         if(message_image){
             message_image.remove()
         }
-        document.getElementById('upload-audio').reset()
+        document.getElementById('upload-image').reset()
         $('#upload-image-modal').css('display', 'block');
     });
 })
@@ -209,12 +209,13 @@ $(document).ready(function() {
                         more_photos_div.html(html)
                         $('#upload-image-modal').css('display','none')
                         document.getElementById('upload-image').reset();
-                        // window.location.href = "/birds/" + $('#bird_id').val();
+                        window.location.href = response['url_to_bird']
                      }
                 if (response['error']) {
                          console.log('Error response',response['error'])
                          $('#replace-image-ajax').html(html)
                          $('#upload-image-modal').css('display','block')
+                         window.location.href = response['url_to_bird']
                          // window.location.href = "/birds/" + $('#bird_id').val();
                      }
                 },
@@ -350,12 +351,14 @@ $(document).ready(function() {
                          edit_div.html(html)
                          $('#edit-bird-modal').css('display', 'block');
                          document.getElementById('edit-bird').reset();
+                         window.location.href = response['url_to_bird']
                       }
                   },
             error: function (xhr, errmsg, err) {
                 console.log('error:', err)
                 console.log(xhr.status + ":" + xhr.responseText)
                 document.getElementById('edit-bird').reset();
+                window.location.href = response['url_to_bird']
             }
         })
     })

@@ -1,9 +1,10 @@
 from PIL import Image
 import json, requests, os
+from django.shortcuts import get_object_or_404
 # from msrestazure.azure_active_directory import AADTokenCredentials
 # import adal
 from .signals import *
-from .models import BirdUser
+from .models import BirdUser, Bird
 # import smtplib
 # from email.mime.multipart import MIMEMultipart
 # from email.mime.text import MIMEText
@@ -117,6 +118,13 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
+def has_permission(request):
+    id = request.POST.get('id')
+    bird = get_object_or_404(Bird, pk=id)
+    if bird.user_id == request.user.id:
+        print(f"request user: {request.user.id}', 'bird.user_id: {bird.user_id}")
+    else:
+        alert("You dont have permissions!")
 
 #Resizes an image and keeps aspect ratio. Set mywidth to the desired with in pixels.
 
