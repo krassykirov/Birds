@@ -1,10 +1,14 @@
 from PIL import Image
 import json, requests, os
+from django.http import JsonResponse,HttpResponse
+from django.template.loader import render_to_string
+from .forms import EditBirdForm
 from django.shortcuts import get_object_or_404
-# from msrestazure.azure_active_directory import AADTokenCredentials
-# import adal
 from .signals import *
 from .models import BirdUser, Bird
+from functools import wraps
+# from msrestazure.azure_active_directory import AADTokenCredentials
+# import adal
 # import smtplib
 # from email.mime.multipart import MIMEMultipart
 # from email.mime.text import MIMEText
@@ -118,13 +122,43 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-def has_permission(request):
-    id = request.POST.get('id')
-    bird = get_object_or_404(Bird, pk=id)
-    if bird.user_id == request.user.id:
-        print(f"request user: {request.user.id}', 'bird.user_id: {bird.user_id}")
-    else:
-        alert("You dont have permissions!")
+def has_permission(f):
+    def wrapped(request, *args, **kwargs):
+        id = request.POST.get('id')
+        bird = get_object_or_404(Bird, pk=id)
+        if not bird.user_id == request.user.id:
+            invoker = f.__name__
+            if invoker == 'edit_bird':
+                template = "edit_ajax_modal.html"
+            elif invoker == 'delete_bird':
+                template = "delete_ajax.html"
+            elif invoker == 'upload_audio':
+                template = "upload_audio_ajax-modal.html"
+            elif invoker == 'upload_image':
+                template = "upload_image_ajax-modal.html"
+            print('Invoker:',invoker)
+            ctx = {"message": "You dont have permissions!",
+                   'url_to_bird': bird.get_absolute_url(),
+                   'form': EditBirdForm(instance=bird)
+                   }
+            html = render_to_string(
+                template_name=template,
+                context=ctx
+            )
+            data_dict = {"html_from_view": html, 'error': "error"}
+            return JsonResponse(data=data_dict, safe=False)
+        else:
+            return f(request, *args, **kwargs)
+    return wrapped
+
+def login_required(fn):
+    async def wrapped(request, *args, **kwargs):
+        session = await get_session(request)
+        if not 'username' in session:
+            return web.HTTPFound('/auth') # return web.HTTPFound(request.rel_url) not working
+        return await fn(request, *args, **kwargs)
+
+    return wrapped
 
 #Resizes an image and keeps aspect ratio. Set mywidth to the desired with in pixels.
 

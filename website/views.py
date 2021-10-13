@@ -222,6 +222,7 @@ def detail_view(request, id):
     edit_bird_form = EditBirdForm(instance=bird)
     return render(request, "bird_detail.html",{'bird': bird,'birds': birds,'edit_bird_form':edit_bird_form})
 
+@has_permission
 @login_required
 def upload_image(request):
     """ Handle AJAX Image Upload """
@@ -229,15 +230,7 @@ def upload_image(request):
         form = BirdImageForm(request.POST, request.FILES)
         id = request.POST.get('id')
         bird = get_object_or_404(Bird, pk=id)
-        if not bird.user_id == request.user.id:
-            ctx = {"message": "You dont have permissions!", 'url_to_bird': bird.get_absolute_url(), 'form': BirdImageForm()}
-            html = render_to_string(
-                template_name="upload_image_ajax-modal.html",
-                context = ctx
-            )
-            data_dict = {"html_from_view": html, 'error': "You dont have permissions to upload!"}
-            return JsonResponse(data=data_dict, safe=False)
-        elif form.is_valid():
+        if form.is_valid():
                 img_obj = form.instance
                 img_obj.bird = bird
                 img_obj.user = request.user
@@ -274,6 +267,7 @@ def upload_image(request):
 
     #return JsonResponse({"message": "Something went wrong"}, status=400)
 
+@has_permission
 @login_required
 def upload_audio(request):
     """ Handle AJAX Audio Upload """
@@ -281,18 +275,6 @@ def upload_audio(request):
         form = BirdSongForm(request.POST, request.FILES)
         id = request.POST.get('id')
         bird = get_object_or_404(Bird, pk=id)
-        if not bird.user_id == request.user.id:
-            print(f"request user: {request.user.id}', 'bird.user_id: {bird.user_id}")
-            ctx = {"message": "You dont have permissions!",
-                   'url_to_bird': bird.get_absolute_url(),
-                   'form': BirdImageForm()
-                   }
-            html = render_to_string(
-                template_name="upload_audio_ajax-modal.html",
-                context = ctx
-            )
-            data_dict = {"html_from_view": html, 'error': "You dont have permissions to upload!"}
-            return JsonResponse(data=data_dict, safe=False)
         if form.is_valid():
             bird_song = BirdSong.objects.filter(bird_id=bird.id)
             if bird_song:
@@ -330,24 +312,14 @@ def upload_audio(request):
 
     #return JsonResponse({"message": "Something went wrong"}, status=400)
 
+@has_permission
 @login_required
 def delete_bird(request):
     """ Delete an instance of a Bird | all related images are delete through/in Signals.py  """
     id = request.POST.get('id')
     bird = get_object_or_404(Bird, pk=id)
     print(f'Bird to delete {bird.bird_name} with id {bird.id}')
-    if not bird.user_id == request.user.id:
-        ctx = {"message": "You dont have permissions!",
-               'url_to_bird': bird.get_absolute_url(),
-               'form': BirdImageForm()
-               }
-        html = render_to_string(
-            template_name="delete_ajax.html",
-            context=ctx
-        )
-        data_dict = {"html_from_view": html, 'error': "You dont have permissions to upload!"}
-        return JsonResponse(data=data_dict, safe=False)
-    elif request.method == 'POST' and request.is_ajax:
+    if request.method == 'POST' and request.is_ajax:
        bird.delete()
        return JsonResponse(data={'success':'success'}, safe=False)
     else:
@@ -359,23 +331,13 @@ def delete_bird(request):
         data_dict = {"html_from_view": html}
         return JsonResponse(data=data_dict, safe=False)
 
+@has_permission
 @login_required
 # Edit an existing Bird Instance with AJAX Request
 def edit_bird(request):
     if request.method == 'POST' and request.is_ajax():
         id = request.POST.get('id')
         bird = get_object_or_404(Bird, pk=id)
-        if not bird.user_id == request.user.id:
-            ctx = {"message": "You dont have permissions!",
-                   'url_to_bird': bird.get_absolute_url(),
-                   'form': EditBirdForm(instance=bird)
-                   }
-            html = render_to_string(
-                template_name="edit_ajax_modal.html",
-                context=ctx
-            )
-            data_dict = {"html_from_view": html, 'error': "error"}
-            return JsonResponse(data=data_dict, safe=False)
         form = EditBirdForm(request.POST, instance=bird)
         if form.is_valid():
            form.save()
