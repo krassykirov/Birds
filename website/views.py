@@ -230,17 +230,14 @@ def upload_image(request):
         id = request.POST.get('id')
         bird = get_object_or_404(Bird, pk=id)
         if not bird.user_id == request.user.id:
-            ctx = {"message": "You dont have permissions!",
-                   'url_to_bird': bird.get_absolute_url(),
-                   'form': BirdImageForm()
-                   }
+            ctx = {"message": "You dont have permissions!", 'url_to_bird': bird.get_absolute_url(), 'form': BirdImageForm()}
             html = render_to_string(
                 template_name="upload_image_ajax-modal.html",
                 context = ctx
             )
             data_dict = {"html_from_view": html, 'error': "You dont have permissions to upload!"}
             return JsonResponse(data=data_dict, safe=False)
-        if form.is_valid():
+        elif form.is_valid():
                 img_obj = form.instance
                 img_obj.bird = bird
                 img_obj.user = request.user
@@ -350,7 +347,7 @@ def delete_bird(request):
         )
         data_dict = {"html_from_view": html, 'error': "You dont have permissions to upload!"}
         return JsonResponse(data=data_dict, safe=False)
-    if request.method == 'POST' and request.is_ajax:
+    elif request.method == 'POST' and request.is_ajax:
        bird.delete()
        return JsonResponse(data={'success':'success'}, safe=False)
     else:

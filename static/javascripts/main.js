@@ -209,7 +209,7 @@ $(document).ready(function() {
                         more_photos_div.html(html)
                         $('#upload-image-modal').css('display','none')
                         document.getElementById('upload-image').reset();
-                        window.location.href = response['url_to_bird']
+                        //window.location.href = response['url_to_bird']
                      }
                 if (response['error']) {
                          console.log('Error response',response['error'])
