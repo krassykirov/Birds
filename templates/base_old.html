@@ -48,6 +48,7 @@
 			<a href="{% url 'search' %}">Birds</a>
 						<ul>
 						<li><a href="{% url 'birds' %}">Add a Bird</a></li>
+						<li><a href="{% url 'grid' %}">Test Grid View</a></li>
 				</ul>
 			</li>
 <!--			{% if request.user.is_authenticated %}-->
@@ -57,12 +58,9 @@
 <!--			{%  endif  %}-->
 			<li>
 			<a href="{% url 'category' %}">Collections</a>
-					<ul>
-						<li><a href="{% url 'grid' %}">Test Grid View</a></li>
-				</ul>
-            </li>
+	            </li>
 			<li>
-			<a href="{% url 'about' %}">About</a>
+			<a href="#">About</a>
 		    </li>
 			{% if not user.is_authenticated %}
 				<li>

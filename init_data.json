@@ -133,22 +133,6 @@
 },
 {
   "model": "website.bird",
-  "pk": 15,
-  "fields": {
-    "bird_name": "Pic a Tete",
-    "user": 1,
-    "url": null,
-    "bird_description": "Magnolia Wrabler",
-    "photo": "krassy@mail.bg/Pic a Tete/images/Pic_à_tête_rouge_Melanerpes_érythrocephalus_dans_lIndia_jKuu2Vj.jpg",
-    "category": 2,
-    "thumbnail": "",
-    "created_on": "2021-09-23T20:20:49.116Z",
-    "updated_on": "2021-09-23T20:20:49.116Z",
-    "likes": []
-  }
-},
-{
-  "model": "website.bird",
   "pk": 16,
   "fields": {
     "bird_name": "Pompadur",
@@ -320,7 +304,9 @@
     "thumbnail": "",
     "created_on": "2021-09-23T21:12:21.972Z",
     "updated_on": "2021-10-10T13:47:21.470Z",
-    "likes": []
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -432,22 +418,6 @@
     "thumbnail": "",
     "created_on": "2021-09-23T21:14:58.403Z",
     "updated_on": "2021-09-23T21:14:58.403Z",
-    "likes": []
-  }
-},
-{
-  "model": "website.bird",
-  "pk": 36,
-  "fields": {
-    "bird_name": "testtt",
-    "user": 1,
-    "url": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001/1200",
-    "bird_description": "",
-    "photo": "krassy/testtt/testtt.jpg",
-    "category": 1,
-    "thumbnail": "",
-    "created_on": "2021-10-10T10:45:28.639Z",
-    "updated_on": "2021-10-10T10:45:28.641Z",
     "likes": []
   }
 },
@@ -581,22 +551,6 @@
 },
 {
   "model": "website.bird",
-  "pk": 53,
-  "fields": {
-    "bird_name": "tesT_permissions",
-    "user": 2,
-    "url": null,
-    "bird_description": "tesT_permissions",
-    "photo": "kr@mail.bg/tesT_permissions/images/AuroraPingvllir_Casado_960.jpg",
-    "category": 10,
-    "thumbnail": "",
-    "created_on": "2021-10-12T20:58:05.588Z",
-    "updated_on": "2021-10-12T21:11:58.224Z",
-    "likes": []
-  }
-},
-{
-  "model": "website.bird",
   "pk": 54,
   "fields": {
     "bird_name": "Crested Helmetshrike",
@@ -672,6 +626,54 @@
     "thumbnail": "",
     "created_on": "2021-10-13T06:35:24.689Z",
     "updated_on": "2021-10-13T06:35:24.690Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 62,
+  "fields": {
+    "bird_name": "Broadbill",
+    "user": 1,
+    "url": null,
+    "bird_description": "Broadbill",
+    "photo": "krassy@mail.bg/Broadbill/images/Black-and-yellow_Broadbill.jpg",
+    "category": 1,
+    "thumbnail": "",
+    "created_on": "2021-10-16T11:46:58.456Z",
+    "updated_on": "2021-10-16T11:46:58.456Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 63,
+  "fields": {
+    "bird_name": "Stonechat",
+    "user": 1,
+    "url": null,
+    "bird_description": "a small Old World songbird of the thrush subfamily, having bold markings and a call that sounds like two stones being knocked together.",
+    "photo": "krassy@mail.bg/Stonechat/images/European_stonechat.jpg",
+    "category": 8,
+    "thumbnail": "",
+    "created_on": "2021-10-16T11:48:35.190Z",
+    "updated_on": "2021-10-16T11:48:35.190Z",
+    "likes": []
+  }
+},
+{
+  "model": "website.bird",
+  "pk": 64,
+  "fields": {
+    "bird_name": "Flycatcher",
+    "user": 1,
+    "url": null,
+    "bird_description": "Flycatcher",
+    "photo": "krassy@mail.bg/Flycatcher/images/YellowishFlycatcher.png",
+    "category": 10,
+    "thumbnail": "",
+    "created_on": "2021-10-16T11:49:37.514Z",
+    "updated_on": "2021-10-16T11:49:37.514Z",
     "likes": []
   }
 },
