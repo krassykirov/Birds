@@ -138,7 +138,7 @@ def has_permission(f):
                 template = "upload_image_ajax-modal.html"
             print('Invoker:',invoker)
             ctx = {"message": "You dont have permissions!",
-                   'url_to_bird': bird.get_absolute_url(),
+                   'url_to_bird': bird.absolute_url,
                    'form': EditBirdForm(instance=bird)
                    }
             html = render_to_string(
