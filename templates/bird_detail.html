@@ -31,7 +31,7 @@
 <div class="two columns">
 <h6 class="sidebartitle">Other Birds</h6>
     {% for bird in birds|slice:":10" %}
-       <a href="{{bird.get_absolute_url}}" class="tags">{{bird.bird_name}}</a>
+       <a href="{{bird.absolute_url}}" class="tags">{{bird.bird_name}}</a>
     {% endfor %}
 
 </div>

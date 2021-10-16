@@ -36,8 +36,8 @@ def about(request):
 
 def grid(request):
     birds = Bird.objects.all()
-    images =  [bird.photo for bird in birds]
-    return render(request, "grid.html", {'birds': birds, 'images': images})
+    bird_data =  [(bird.photo,bird.absolute_url) for bird in birds]
+    return render(request, "grid.html", {'birds': birds, 'bird_data': bird_data})
 
 @login_required
 def category(request,**kwargs):

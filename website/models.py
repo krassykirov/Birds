@@ -84,7 +84,8 @@ class Bird(models.Model):
     created_on = models.DateTimeField(auto_now_add =True)
     updated_on = models.DateTimeField(auto_now = True)
 
-    def get_absolute_url(self):
+    @property
+    def absolute_url(self):
         if not self.id:
             return None
         return reverse("detail", kwargs={'id': self.id})

@@ -52,32 +52,39 @@
 <!-- Photo Grid -->
  <div class="row">
   <div class="column">
-  {% for img in images|slice:":10" %}
+  {% for img,url in bird_data|slice:"0:10" %}
       {% if img %}
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
+        <a href="{{ url }}">
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%; cursor: pointer">
       {% endif %}
-  {% endfor %}
+   {% endfor %}
   </div>
   <div class="column">
-      {% for img in images|slice:"10:20" %}
+      {% for img,url in bird_data|slice:"10:20" %}
           {% if img %}
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
+      <a href="{{ url }}">
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%;cursor: pointer">
+      </a>
           {% endif %}
-        {% endfor %}
+      {% endfor %}
   </div>
   <div class="column">
-    {% for img in images|slice:"20:30" %}
-        {% if img %}
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
-        {% endif %}
-        {% endfor %}
+    {% for img,url in bird_data|slice:"20:30" %}
+          {% if img %}
+      <a href="{{ url }}">
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%;cursor: pointer">
+      </a>
+          {% endif %}
+      {% endfor %}
   </div>
   <div class="column">
-    {% for img in images|slice:"30:" %}
-        {% if img %}
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%">
-        {% endif %}
-        {% endfor %}
+    {% for img,url in bird_data|slice:"30:" %}
+          {% if img %}
+      <a href="{{ url }}">
+        <img class="zoom" src="../static/img/{{ img }}" style="width:100%;cursor: pointer">
+      </a>
+          {% endif %}
+      {% endfor %}
   </div>
 </div>
 

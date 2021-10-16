@@ -45,7 +45,7 @@
 			<div class="portofoliothumb">
 				<div class="portofoliothumboverlay fouroverlay">
 					<div class="inner threedetail">
-						<a class="projectdetail" href="{{bird.get_absolute_url}}">+ Details </a>
+						<a class="projectdetail" href="{{bird.absolute_url}}">+ Details </a>
 					 <blockquote class="overlay" style="color: #8ed3e7">
                     {% if bird not in request.user.likes.all or not request.user.is_authenticated %}
                    <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: white;font-size: 24px"></i>
