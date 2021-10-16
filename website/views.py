@@ -114,12 +114,12 @@ def create_bird(request):
                        'alert': "alert-box alert",
                        'form': BirdForm(),
                        'bird': inst,
-                       'url_to_bird':inst.get_absolute_url()}
+                       'url_to_bird':inst.absolute_url}
                 html = render_to_string(
                     template_name="create_bird_form.html",
                     context=ctx
                 )
-                data_dict = {"html_from_view": html,'success': 'success','url_to_bird':inst.get_absolute_url()}
+                data_dict = {"html_from_view": html,'success': 'success','url_to_bird':inst.absolute_url}
                 return JsonResponse(data=data_dict, safe=False)
 
             if not request.POST.get("url"):
