@@ -30,11 +30,24 @@
   max-width: 25%;
   padding: 4px 4px;
 }
+
 .column img {
   margin-top: 8px;
   vertical-align: middle;
   width: 100%;
 }
+
+.img_wrapper:hover .overlay {
+  opacity: 1;
+}
+.teambox:hover img {
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -o-transform: scale(2);
+    -ms-transform: scale(1.4);
+    transform: scale(1.6);
+}
+
 </style>
 
 <div id="subheader">
@@ -52,42 +65,57 @@
 <!-- Photo Grid -->
  <div class="row">
   <div class="column">
-  {% for img,url in bird_data|slice:"0:10" %}
-      {% if img %}
-        <a href="{{ url }}">
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%; cursor: pointer">
-      {% endif %}
-   {% endfor %}
-  </div>
-  <div class="column">
-      {% for img,url in bird_data|slice:"10:20" %}
-          {% if img %}
-      <a href="{{ url }}">
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%;cursor: pointer">
+    {% for bird in birds|slice:"0:10" %}
+          {% if bird.photo  %}
+      <a href="{{ bird.absolute_url  }}">
+        <img class="zoom" src="../static/img/{{ bird.photo }}" style="width:100%;cursor: pointer">
       </a>
           {% endif %}
       {% endfor %}
   </div>
   <div class="column">
-    {% for img,url in bird_data|slice:"20:30" %}
-          {% if img %}
-      <a href="{{ url }}">
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%;cursor: pointer">
+    {% for bird in birds|slice:"10:20" %}
+          {% if bird.photo  %}
+      <a href="{{ bird.absolute_url  }}">
+        <img class="zoom" src="../static/img/{{ bird.photo }}" style="width:100%;cursor: pointer">
       </a>
           {% endif %}
       {% endfor %}
   </div>
   <div class="column">
-    {% for img,url in bird_data|slice:"30:" %}
-          {% if img %}
-      <a href="{{ url }}">
-        <img class="zoom" src="../static/img/{{ img }}" style="width:100%;cursor: pointer">
+    {% for bird in birds|slice:"20:30" %}
+          {% if bird.photo  %}
+      <a href="{{ bird.absolute_url  }}">
+        <img class="zoom" src="../static/img/{{ bird.photo }}" style="width:100%;cursor: pointer">
       </a>
           {% endif %}
       {% endfor %}
   </div>
-</div>
-
+  <div class="column">
+    {% for bird in birds|slice:"30:40" %}
+          {% if bird.photo  %}
+      <a href="{{ bird.absolute_url  }}">
+        <img class="zoom" src="../static/img/{{ bird.photo }}" style="width:100%;cursor: pointer">
+      </a>
+          {% endif %}
+      {% endfor %}
+  </div>
+  <div class="column">
+    {% for bird in birds|slice:"40:" %}
+      <div class="teamwrap teambox">
+      <div class="img_wrapper">
+	        <a href="{{ bird.absolute_url }}">
+               <img class="zoom" src="../static/img/{{ bird.photo }}" alt="{{ bird.bird_name }}">
+            </a>
+              <blockquote class="overlay" style="color: #8ed3e7">{{ bird.bird_name }}
+               <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: #8ed3e7;font-size: 24px"></i>
+              </blockquote>
+      </div>
+      {% endfor %}
+  </div>
 <hr>
+
+
+
 
 {% endblock %}

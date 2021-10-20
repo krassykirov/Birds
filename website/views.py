@@ -36,8 +36,7 @@ def about(request):
 
 def grid(request):
     birds = Bird.objects.all()
-    bird_data =  [(bird.photo,bird.absolute_url) for bird in birds]
-    return render(request, "grid.html", {'birds': birds, 'bird_data': bird_data})
+    return render(request, "grid.html", {'birds': birds })
 
 @login_required
 def category(request,**kwargs):
@@ -164,13 +163,13 @@ def create_bird(request):
                    'alert': "alert-box alert",
                    'form': BirdForm(),
                    'bird': bird,
-                   'url_to_bird': inst.get_absolute_url()
+                   'url_to_bird': bird.absolute_url
                    }
             html = render_to_string(
                 template_name="create_bird_form.html",
                 context=ctx
             )
-            data_dict = {"html_from_view": html,'success': 'success','url_to_bird':inst.get_absolute_url()}
+            data_dict = {"html_from_view": html,'success': 'success','url_to_bird':bird.absolute_url}
             return JsonResponse(data=data_dict, safe=False)
         else:
             alert = "alert-box alert"

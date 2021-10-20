@@ -29,7 +29,6 @@
   width: 100%;
   transition: .5s ease;
   opacity:0;
-  color: white;
   font-size: 20px;
   padding: 20px;
   text-align: center;
@@ -52,18 +51,18 @@
 {% for bird in birds %}
  {% with bird.images.all.0 as img %}
 
-<div class="teamwrap teambox" style="max-width:480px; max-height:270px; width:auto; height:auto" >
-    <div class="img_wrapper">
-	<a href="{{bird.absolute_url}}">
+<div class="teamwrap teambox" style="max-width:24.5%; max-height:230px; width:auto; height:auto; flex: 24.5%; object-fit: cover;" >
+    <div class="img_wrapper" style="float: left ;object-fit: cover;">
+	<a href="{{ bird.absolute_url }}">
         <img class="img" src="../static/img/{{ bird.photo }}"  alt="{{ bird.bird_name }}">
-        </a>
-                <blockquote class="overlay" style="color: #8ed3e7">{{ bird.bird_name }}
-                    {% if bird not in request.user.likes.all or not request.user.is_authenticated %}
-                   <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: white;font-size: 24px"></i>
-                   {% else  %}
-                   <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: #8ed3e7;font-size: 24px"></i>
-                   {% endif  %}
-                </blockquote>
+    </a>
+         <blockquote class="overlay" style="color: #8ed3e7">{{ bird.bird_name }}
+            {% if bird not in request.user.likes.all or not request.user.is_authenticated %}
+              <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: white;font-size: 24px"></i>
+           {% else  %}
+              <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: #8ed3e7;font-size: 24px"></i>
+           {% endif  %}
+         </blockquote>
      </div>
  </div>
  {% endwith %}

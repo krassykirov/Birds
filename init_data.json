@@ -687,6 +687,7 @@
   {"model": "website.birdcategory", "pk": 9, "fields": {"name": "Sparrow"}},
   {"model": "website.birdcategory", "pk": 10, "fields": {"name": "Starling"}},
   {"model": "website.birdcategory", "pk": 11, "fields": {"name": "Woodpecker"}},
+  {"model": "website.birdcategory", "pk": 12, "fields": {"name": "Tit"}},
     {
     "model": "website.birduser",
     "pk": 1,
