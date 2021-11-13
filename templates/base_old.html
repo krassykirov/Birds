@@ -75,6 +75,7 @@
 				<ul>
 					<li><a href="{% url 'logout' %}">Logout</a></li>
 					<li><a href="{% url 'change_password' %}">Change Password</a></li>
+					<li><a href="{% url 'category' %}/{{ request.user }}">My Birds </a></li>
 			   </ul>
 			</li>
 			{% endif %}

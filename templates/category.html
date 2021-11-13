@@ -43,7 +43,7 @@
 				{% endif %}
 			</p>
 			<div class="portofoliothumb">
-				<div class="portofoliothumboverlay fouroverlay">
+ 			<div class="portofoliothumboverlay fouroverlay">
 					<div class="inner threedetail">
 						<a class="projectdetail" href="{{bird.absolute_url}}">+ Details </a>
 					 <blockquote class="overlay" style="color: #8ed3e7">
@@ -55,7 +55,7 @@
                 </blockquote>
 					</div>
 				</div>
-				<img src="/static/img/{{ img }}" class="fourimage" style="max-width:350px; height:auto !important" alt="{{ bird.bird_name}}"/>
+				<img src="/static/img/{{ img }}" class="fourimage" style="max-width:350px; max-height:320px; height:auto !important" alt="{{ bird.bird_name}}"/>
 			</div>
 		</div>
 	{% endwith %}

@@ -58,9 +58,9 @@
     </a>
          <blockquote class="overlay" style="color: #8ed3e7">{{ bird.bird_name }}
             {% if bird not in request.user.likes.all or not request.user.is_authenticated %}
-              <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: white;font-size: 24px"></i>
-           {% else  %}
-              <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: #8ed3e7;font-size: 24px"></i>
+              <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: white;font-size: 20px"></i>
+            {% else  %}
+              <i class="fa fa-thumbs-up" data-id="{{ bird.id }}" style="cursor: pointer; color: #8ed3e7;font-size: 20px"></i>
            {% endif  %}
          </blockquote>
      </div>

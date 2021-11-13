@@ -41,7 +41,7 @@ def grid(request):
 @login_required
 def category(request,**kwargs):
    try:
-        user = BirdUser.objects.get(email=kwargs.get('str'))
+        user = BirdUser.objects.get(email=kwargs.get('mail'))
         user_birds = Bird.objects.filter(user=user)
         categories = {bird.get_category() for bird in user_birds}
         return render(request, "category.html", {'birds': user_birds, 'categories': categories})
@@ -201,8 +201,10 @@ def ajax_search(request):
     if search:
         birds = Bird.objects.filter(q_exact|q_icontains).prefetch_related('images').order_by('bird_name')
     else:
-        birds = Bird.objects.all()
+        birds = Bird.objects.all().prefetch_related('images').order_by('bird_name')
     ctx["birds"] = birds
+    #categories = {bird.get_category() for bird in birds}
+    #ctx["categories"] = categories
     if request.is_ajax() or request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         html = render_to_string(
             template_name="search_partial.html",

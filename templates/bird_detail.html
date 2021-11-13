@@ -33,7 +33,6 @@
     {% for bird in birds|slice:":10" %}
        <a href="{{bird.absolute_url}}" class="tags">{{bird.bird_name}}</a>
     {% endfor %}
-
 </div>
 <!-- CONTENT
 ================================================== -->
@@ -50,6 +49,7 @@
 			<dd><a href="#Audio">Audio</a></dd>
 			<dd><a href="#Edit">Edit</a></dd>
             <dd><a href="#Delete">Delete</a></dd>
+            <dd><a href="#Description">Description</a></dd>
 		</dl>
 		<ul class="tabs-content">
 		  <li class="active" id="ImageTab">
@@ -67,6 +67,10 @@
             <li id="DeleteTab">
 				<p>Delete from Collection</p>
 				  <button type="submit" value="ok" class="submit" id="delete-bird-btn">Delete</button>
+			</li>
+			<li id="DescriptionTab">
+				<p>{{bird.bird_name}}</p>
+
 			</li>
 		</ul>
 	</div>
