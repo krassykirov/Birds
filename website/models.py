@@ -65,7 +65,7 @@ def user_directory_path(instance, filename):
          return '{0}/{1}/images/{2}'.format(instance.user.email,instance.bird_name,filename)
 
 class Bird(models.Model):
-    # TODO: add name validation startswith number and others
+    """ Bird Model Class """
     bird_name = models.CharField(max_length=100,unique=True,blank=False,editable=True,
                                  validators=[RegexValidator(
                                      regex=  '^[A-Za-z0-9? ,_-]+$', #'[a-zA-Z\u0400-\u04FF]$', # /[\w\u0400-\u04ff\u0500-\u052f\ua640-\ua69f\u1d2b-\u1d78]+/
@@ -109,7 +109,7 @@ class Bird(models.Model):
         ordering = ['bird_name']
 
     def __str__(self):
-            return self.bird_name
+        return self.bird_name
 
 class BirdImage(models.Model):
     # TODO, Set default = img/default.png
