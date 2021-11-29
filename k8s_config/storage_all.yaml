@@ -1,3 +1,26 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: microk8s-hostpath
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: microk8s.io/hostpath
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-configuration
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: "krassydb"
+  POSTGRES_USER: "krassy"
+  POSTGRES_PASSWORD: "19"
+
+---
+
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -30,6 +53,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
 
 
 
