@@ -81,7 +81,7 @@ metadata:
     app: web
 spec:
   ports:
-  - port: 8000
+  - port: 80
     targetPort: 8000
     name: web
   type: LoadBalancer
