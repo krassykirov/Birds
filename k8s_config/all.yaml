@@ -144,7 +144,7 @@ spec:
         app: web
     spec:
       containers:
-      - image: krassy19/cbirds
+      - image: krassy.azurecr.io/krassybirds
         imagePullPolicy: "Always"
         name: web
         ports:
