@@ -67,7 +67,7 @@ spec:
   - port: 5432
     targetPort: 5432
     name: db
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: postgres
 
@@ -84,7 +84,7 @@ spec:
   - port: 8000
     targetPort: 8000
     name: web
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: web
 
