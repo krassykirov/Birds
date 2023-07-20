@@ -1,5 +1,0 @@
-apiVersion: v2
-name: mychart
-description: A Helm chart for deploying PostgreSQL and web services
-version: 0.1.0
-appVersion: 1.0.0

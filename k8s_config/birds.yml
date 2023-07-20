@@ -15,7 +15,7 @@ spec:
         app: web
     spec:
       containers:
-      - image: krassy19/birds_new
+      - image: krassy19/birds:latest
         imagePullPolicy: "Always"
         name: web
         ports:

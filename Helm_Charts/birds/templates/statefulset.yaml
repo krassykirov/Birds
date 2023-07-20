@@ -19,9 +19,6 @@ spec:
       containers:
       - name: db
         image: krassy19/db
-        envFrom:
-        - configMapRef:
-            name: postgres-configuration
         ports:
         - containerPort: 5432
           name: db
@@ -32,5 +29,5 @@ spec:
       - name: pv-data
         persistentVolumeClaim:
           claimName: postgres-pv-claim
-      serviceName: db
+
 
