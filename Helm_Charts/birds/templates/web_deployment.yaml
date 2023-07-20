@@ -15,13 +15,12 @@ spec:
         app: web
     spec:
       containers:
-      - image: krassy19/cbirds:latest
+      - name: web
+        image: krassy19/birdsdb
         imagePullPolicy: "Always"
-        name: web
         ports:
         - containerPort: 8000
-      restartPolicy: Always
-      envFrom:
-      - ConfigMapRef:
-          name: postgres-configuration
-serviceName: web
+        envFrom:
+          - configMapRef:
+              name: postgres-configuration
+
